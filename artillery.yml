@@ -1,0 +1,17 @@
+config:
+  target: "http://localhost:5000"
+  phases:
+    - duration: 10
+      arrivalCount: 100
+      name: "100 concurrent-style requests"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - name: "Health and book list load test"
+    flow:
+      - get:
+          url: "/api/health"
+      - get:
+          url: "/api/books?page=1&limit=10"
